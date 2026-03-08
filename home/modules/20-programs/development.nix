@@ -35,6 +35,11 @@
     mutableExtensionsDir = false;
 
     profiles.default.userSettings = {
+      "extensions.autoUpdate" = false;
+      "extensions.autoCheckUpdates" = false;
+      "update.mode" = "none";
+      "update.showReleaseNotes" = false;
+
       "pylint.enable" = true;
       "pylint.args" = [
         "--disable=missing-module-docstring"
