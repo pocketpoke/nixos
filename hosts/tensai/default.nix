@@ -22,6 +22,9 @@
     # Services & programs
     ../../modules/services
 
+    # Shell
+    ../../modules/shell
+
     # Users
     ../../modules/users
   ];
