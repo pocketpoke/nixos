@@ -68,6 +68,9 @@
 
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nixd";
+      "nix.hiddenLanguageServerErrors" = [
+        "textDocument/definition"
+      ];
 
       "[nix]" = {
         "editor.formatOnSave" = true;
