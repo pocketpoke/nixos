@@ -5,6 +5,8 @@
     wget
     curl
 
+    fastfetch
+    yazi
     tree
 
     ffmpeg
