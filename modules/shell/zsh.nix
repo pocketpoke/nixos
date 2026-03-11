@@ -26,6 +26,11 @@
       "git"
       "docker"
     ];
+
+    shellAliases = {
+      rebuild = "pushd ~/.config/nixos; sudo nixos-rebuild switch --flake .; popd";
+      update = "pushd ~/.config/nixos; nix flake update; popd";
+    };
   };
 
   users.users.user = {
