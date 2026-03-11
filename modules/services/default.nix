@@ -6,5 +6,6 @@
     ./ollama.nix
     ./steam.nix
     ./tailscale.nix
+    ./virtualization.nix
   ];
 }
