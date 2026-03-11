@@ -5,6 +5,7 @@
     wget
     curl
 
+    btop
     fastfetch
     yazi
     tree
