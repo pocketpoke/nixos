@@ -5,7 +5,7 @@
     ./hardware-configuration.nix
 
     # Core
-    ../../modules/_core
+    ../../modules/core
 
     # Boot & storage
     ../../modules/boot
