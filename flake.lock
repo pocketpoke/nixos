@@ -696,11 +696,11 @@
         "twitchdownloadercli": "twitchdownloadercli"
       },
       "locked": {
-        "lastModified": 1772962898,
-        "narHash": "sha256-bctCmgXhPuJ+2pyUEHN+ptMMlh9YkmdMLxTV7d/B11o=",
+        "lastModified": 1773300963,
+        "narHash": "sha256-t4MxcDbGn59cc99hQBSC82xn6zC290ZRvUSrhASlLYM=",
         "owner": "pocketpoke",
         "repo": "StreamOrganizer",
-        "rev": "9161fd4abc702e7a7ea2cffe6e36ed85b36114ef",
+        "rev": "8342a5a11b19cbe4eb0a3f0cf9844c0ea38d2bf7",
         "type": "github"
       },
       "original": {
@@ -795,11 +795,11 @@
         "nixpkgs": "nixpkgs_10"
       },
       "locked": {
-        "lastModified": 1772961031,
-        "narHash": "sha256-A9GiukNtO70i1DAnCcucY59UsnRHdFii+iokTkYB61k=",
+        "lastModified": 1773300726,
+        "narHash": "sha256-yE6y7+mLB3limZlpx+z6cu2uqxYyVXWRr/zr+fmHK3c=",
         "owner": "pocketpoke",
         "repo": "TwitchDownloaderCLI-Nix-Flake",
-        "rev": "4f75ed022a9592a48a5f5ba9125d2f111600f929",
+        "rev": "b790c39146ca46b28d9eb16614a42248cb41fae9",
         "type": "github"
       },
       "original": {
