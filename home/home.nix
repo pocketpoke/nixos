@@ -9,8 +9,8 @@
     inputs.nixcord.homeModules.nixcord
     inputs.plasma-manager.homeModules.plasma-manager
 
-    ./modules/10-desktop
-    ./modules/20-programs
-    ./modules/30-desktop-entries
+    ./modules/desktop
+    ./modules/desktop/desktop-entries
+    ./modules/programs
   ];
 }
