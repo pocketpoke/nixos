@@ -13,16 +13,16 @@
     ffmpeg
 
     yt-dlp
-    (pkgs.callPackage ../../packages/twitchlink.nix { })
+    # (pkgs.callPackage ../../packages/twitchlink.nix { })
 
-    inputs.twitchdownloadercli.packages.${pkgs.system}.twitchdownloadercli
-    inputs.stream-organizer.packages.${pkgs.system}.default
+    # inputs.twitchdownloadercli.packages.${pkgs.system}.twitchdownloadercli
+    # inputs.stream-organizer.packages.${pkgs.system}.default
 
     bitwarden-desktop
-    pika-backup
+    # pika-backup
     virt-viewer
 
-    gsmartcontrol
-    smartmontools
+    # gsmartcontrol
+    # smartmontools
   ];
 }
