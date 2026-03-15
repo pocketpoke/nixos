@@ -4,26 +4,26 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
 
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixcord.url = "github:FlameFlag/nixcord";
-
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     hytale-launcher.url = "github:unazikx/hytale-launcher-nix";
-
     affinity-nix.url = "github:mrshmllow/affinity-nix";
-
     mistral-vibe.url = "github:mistralai/mistral-vibe";
-
     stream-organizer.url = "github:pocketpoke/StreamOrganizer";
-
     twitchdownloadercli.url = "github:pocketpoke/TwitchDownloaderCLI-Nix-Flake";
 
     agenix.url = "github:ryantm/agenix";
@@ -34,6 +34,7 @@
     {
       self,
       nixpkgs,
+      nix-darwin,
       home-manager,
       agenix,
       ...
@@ -53,7 +54,23 @@
             home-manager.sharedModules = [
               agenix.homeManagerModules.default
             ];
-            home-manager.users.user = import ./home/home.nix;
+            home-manager.users.user = import ./home/tensai/home.nix;
+          }
+        ];
+      };
+
+      darwinConfigurations.wundercube = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        specialArgs = { inherit inputs self; };
+        modules = [
+          ./hosts/wundercube/default.nix
+
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.users.user = import ./home/wundercube/home.nix;
           }
         ];
       };
