@@ -1,0 +1,5 @@
+creation_rules:
+  - path_regex: \.yaml$|\.json$|\.age$
+    key_groups:
+    - age:
+      - age1xt03sypxggjrsw3czt86ad9lgg8762v6npean6h94crc00du75yss92uyf
