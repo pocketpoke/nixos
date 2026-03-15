@@ -20,7 +20,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hytale-launcher.url = "github:unazikx/hytale-launcher-nix";
+    hytale-launcher.url = "github:JPyke3/hytale-launcher-nix";
     affinity-nix.url = "github:mrshmllow/affinity-nix";
     mistral-vibe.url = "github:mistralai/mistral-vibe";
     stream-organizer.url = "github:pocketpoke/StreamOrganizer";
