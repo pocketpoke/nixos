@@ -70,6 +70,9 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.sharedModules = [
+              agenix.homeManagerModules.default
+            ];
             home-manager.users.user = import ./home/wundercube/home.nix;
           }
         ];
