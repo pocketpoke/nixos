@@ -19,11 +19,13 @@
     age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
 
     secrets.chatterino2-settings = {
+      key = "";
+      format = "json";
       path =
         if pkgs.stdenv.hostPlatform.isDarwin then
-          "${config.home.homeDirectory}/Library/Application Support/chatterino/settings.json"
+          "${config.home.homeDirectory}/Library/Application Support/chatterino/Settings/settings.json"
         else
-          "${config.home.homeDirectory}/.local/share/chatterino/settings.json";
+          "${config.home.homeDirectory}/.local/share/chatterino/Settings/settings.json";
     };
   };
 
