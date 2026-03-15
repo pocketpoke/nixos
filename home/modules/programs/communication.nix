@@ -10,7 +10,13 @@
 
   age.secrets.chatterino2-settings = {
     file = ../../../secrets/chatterino2-settings.age;
-    path = "${config.home.homeDirectory}/.config/chatterino2/settings.json";
+
+    path =
+      if pkgs.stdenv.hostPlatform.isDarwin then
+        "${config.home.homeDirectory}/Library/Application Support/chatterino/settings.json"
+      else
+        "${config.home.homeDirectory}/.local/share/chatterino/settings.json";
+
     mode = "0600";
   };
 
