@@ -14,20 +14,22 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixcord.url = "github:FlameFlag/nixcord";
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixcord.url = "github:FlameFlag/nixcord";
     hytale-launcher.url = "github:JPyke3/hytale-launcher-nix";
     affinity-nix.url = "github:mrshmllow/affinity-nix";
     mistral-vibe.url = "github:mistralai/mistral-vibe";
     stream-organizer.url = "github:pocketpoke/StreamOrganizer";
     twitchdownloadercli.url = "github:pocketpoke/TwitchDownloaderCLI-Nix-Flake";
-
-    agenix.url = "github:ryantm/agenix";
-    agenix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -36,7 +38,7 @@
       nixpkgs,
       nix-darwin,
       home-manager,
-      agenix,
+      sops-nix,
       ...
     }@inputs:
     {
@@ -52,7 +54,7 @@
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.sharedModules = [
-              agenix.homeManagerModules.default
+              sops-nix.homeManagerModules.sops
             ];
             home-manager.users.user = import ./home/tensai/home.nix;
           }
@@ -71,7 +73,7 @@
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.sharedModules = [
-              agenix.homeManagerModules.default
+              sops-nix.homeManagerModules.sops
             ];
             home-manager.users.user = import ./home/wundercube/home.nix;
           }

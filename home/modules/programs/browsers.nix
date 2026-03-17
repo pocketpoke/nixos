@@ -2,9 +2,9 @@
 
 {
   home.packages = with pkgs; [
-    librewolf
+    # librewolf
     brave
-    mullvad-browser
-    tor-browser
+    # mullvad-browser
+    # tor-browser
   ];
 }

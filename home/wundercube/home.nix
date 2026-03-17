@@ -9,7 +9,6 @@
 
   imports = [
     inputs.nixcord.homeModules.nixcord
-    inputs.plasma-manager.homeModules.plasma-manager
 
     ../modules/programs
   ];

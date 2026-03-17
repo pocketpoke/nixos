@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 {
   home.packages = with pkgs; [
@@ -8,17 +13,25 @@
     # telegram-desktop
   ];
 
-  age.secrets.chatterino2-settings = {
-    file = ../../../secrets/chatterino2-settings.age;
+  sops = {
+    defaultSopsFile = ../../../secrets/chatterino2-settings.json;
 
-    path =
-      if pkgs.stdenv.hostPlatform.isDarwin then
-        "${config.home.homeDirectory}/Library/Application Support/chatterino/settings.json"
-      else
-        "${config.home.homeDirectory}/.local/share/chatterino/settings.json";
+    age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
 
-    mode = "0600";
+    secrets.chatterino2-settings = {
+      key = "";
+      format = "json";
+      path =
+        if pkgs.stdenv.hostPlatform.isDarwin then
+          "${config.home.homeDirectory}/Library/Application Support/chatterino/Settings/settings.json"
+        else
+          "${config.home.homeDirectory}/.local/share/chatterino/Settings/settings.json";
+    };
   };
+
+  home.activation.ensureChatterinoDir = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    mkdir -p "${builtins.dirOf config.sops.secrets.chatterino2-settings.path}"
+  '';
 
   programs.nixcord = {
     enable = true;

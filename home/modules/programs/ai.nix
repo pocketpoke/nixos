@@ -2,10 +2,10 @@
 
 {
   home.packages = with pkgs; [
-    lmstudio
+    # lmstudio
 
     inputs.mistral-vibe.packages.${pkgs.system}.default
 
-    (pkgs.callPackage ../../packages/stability-matrix.nix { })
+    # (pkgs.callPackage ../../packages/stability-matrix.nix { })
   ];
 }
