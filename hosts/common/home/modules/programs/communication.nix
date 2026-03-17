@@ -2,15 +2,20 @@
   pkgs,
   config,
   lib,
+  inputs,
   ...
 }:
 
 {
+  imports = [
+    inputs.nixcord.homeModules.nixcord
+  ];
+
   home.packages = with pkgs; [
     chatterino2
     thunderbird
     signal-desktop
-    # telegram-desktop
+    telegram-desktop
   ];
 
   sops = {
