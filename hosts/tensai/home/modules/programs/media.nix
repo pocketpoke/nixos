@@ -2,7 +2,6 @@
 
 {
   home.packages = with pkgs; [
-    # vlc
-    imgbrd-grabber
+    vlc
   ];
 }

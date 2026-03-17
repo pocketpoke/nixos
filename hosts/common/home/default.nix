@@ -2,6 +2,6 @@
 
 {
   imports = [
-    ./plasma
+    ./modules/programs
   ];
 }

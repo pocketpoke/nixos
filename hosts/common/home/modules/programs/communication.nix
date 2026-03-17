@@ -2,19 +2,24 @@
   pkgs,
   config,
   lib,
+  inputs,
   ...
 }:
 
 {
+  imports = [
+    inputs.nixcord.homeModules.nixcord
+  ];
+
   home.packages = with pkgs; [
     chatterino2
     thunderbird
     signal-desktop
-    # telegram-desktop
+    telegram-desktop
   ];
 
   sops = {
-    defaultSopsFile = ../../../secrets/chatterino2-settings.json;
+    defaultSopsFile = ../../../../../secrets/chatterino2-settings.json;
 
     age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
 

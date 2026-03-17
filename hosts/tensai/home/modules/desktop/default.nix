@@ -1,0 +1,8 @@
+{ ... }:
+
+{
+  imports = [
+    ./plasma
+    ./desktop-entries
+  ];
+}
