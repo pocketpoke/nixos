@@ -15,7 +15,6 @@
     chatterino2
     thunderbird
     signal-desktop
-    telegram-desktop
   ];
 
   sops = {
