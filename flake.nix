@@ -46,7 +46,7 @@
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
-          ./hosts/tensai/default.nix
+          ./hosts/tensai/system
 
           home-manager.nixosModules.home-manager
           {
@@ -56,7 +56,7 @@
             home-manager.sharedModules = [
               sops-nix.homeManagerModules.sops
             ];
-            home-manager.users.user = import ./home/tensai/home.nix;
+            home-manager.users.user = import ./hosts/tensai/home;
           }
         ];
       };
@@ -65,7 +65,7 @@
         system = "aarch64-darwin";
         specialArgs = { inherit inputs self; };
         modules = [
-          ./hosts/wundercube/default.nix
+          ./hosts/wundercube/system
 
           home-manager.darwinModules.home-manager
           {
@@ -75,7 +75,7 @@
             home-manager.sharedModules = [
               sops-nix.homeManagerModules.sops
             ];
-            home-manager.users.user = import ./home/wundercube/home.nix;
+            home-manager.users.user = import ./hosts/wundercube/home;
           }
         ];
       };

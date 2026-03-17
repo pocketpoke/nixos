@@ -14,7 +14,7 @@
   ];
 
   sops = {
-    defaultSopsFile = ../../../secrets/chatterino2-settings.json;
+    defaultSopsFile = ../../../../../secrets/chatterino2-settings.json;
 
     age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
 

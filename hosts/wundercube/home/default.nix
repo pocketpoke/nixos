@@ -10,6 +10,6 @@
   imports = [
     inputs.nixcord.homeModules.nixcord
 
-    ../modules/programs
+    ./modules/programs
   ];
 }

@@ -3,5 +3,6 @@
 {
   imports = [
     ./plasma
+    ./desktop-entries
   ];
 }
