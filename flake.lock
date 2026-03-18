@@ -249,15 +249,15 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1773073154,
-        "narHash": "sha256-x0BcLaOmcwM6kZP0RIjXQJkeivz5qo/uCNePo8/NexA=",
-        "owner": "JPyke3",
+        "lastModified": 1773801551,
+        "narHash": "sha256-xWXPimH79fbzGmkt0VptojfBGI+FwSIMDYPHSRcAVOA=",
+        "owner": "pocketpoke",
         "repo": "hytale-launcher-nix",
-        "rev": "7fecb1b70f75f9f9d7b89ebb6c9511db1ef58725",
+        "rev": "9f507686793e5881bc2f2581d330492d2f99caa2",
         "type": "github"
       },
       "original": {
-        "owner": "JPyke3",
+        "owner": "pocketpoke",
         "repo": "hytale-launcher-nix",
         "type": "github"
       }
