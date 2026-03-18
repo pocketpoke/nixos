@@ -1,7 +1,7 @@
 { pkgs, inputs, ... }:
 
 {
-  home.packages = [
-    inputs.mistral-vibe.packages.${pkgs.system}.default
+  home.packages = with pkgs; [
+    inputs.mistral-vibe.packages.${stdenv.hostPlatform.system}.default
   ];
 }
