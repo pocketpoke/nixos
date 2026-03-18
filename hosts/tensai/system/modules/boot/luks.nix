@@ -7,7 +7,7 @@
 
     "storage" = {
       device = "/dev/disk/by-uuid/03872fe3-cfe6-4965-a4eb-fe64287da8f5";
-      preLVM = false;
+      # preLVM = false;
       allowDiscards = true;
     };
   };
