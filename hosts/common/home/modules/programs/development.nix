@@ -9,9 +9,11 @@
   programs.git = {
     enable = true;
 
-    userName = "pocketpoke";
-    userEmail = "191191762+pocketpoke@users.noreply.github.com";
-    extraConfig.credential.helper = "store";
+    settings = {
+      user.name = "pocketpoke";
+      user.email = "191191762+pocketpoke@users.noreply.github.com";
+      credential.helper = "store";
+    };
   };
 
   programs.vscode = {
