@@ -28,7 +28,7 @@
     hytale-launcher.url = "github:pocketpoke/hytale-launcher-nix";
     affinity-nix.url = "github:mrshmllow/affinity-nix";
     mistral-vibe.url = "github:mistralai/mistral-vibe";
-    stream-organizer.url = "github:pocketpoke/StreamOrganizer";
+    stream-organizer.url = "github:pocketpoke/StreamOrganizer/dev";
     twitchdownloadercli.url = "github:pocketpoke/TwitchDownloaderCLI-Nix-Flake";
   };
 

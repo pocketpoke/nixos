@@ -503,11 +503,11 @@
     },
     "nixpkgs_7": {
       "locked": {
-        "lastModified": 1773705440,
-        "narHash": "sha256-xB30bbAp0e7ogSEYyc126mAJMt4FRFh8wtm6ADE1xuM=",
+        "lastModified": 1773814637,
+        "narHash": "sha256-GNU+ooRmrHLfjlMsKdn0prEKVa0faVanm0jrgu1J/gY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "48652e9d5aea46e555b3df87354280d4f29cd3a3",
+        "rev": "fea3b367d61c1a6592bc47c72f40a9f3e6a53e96",
         "type": "github"
       },
       "original": {
@@ -690,15 +690,16 @@
         "twitchdownloadercli": "twitchdownloadercli"
       },
       "locked": {
-        "lastModified": 1773300963,
-        "narHash": "sha256-t4MxcDbGn59cc99hQBSC82xn6zC290ZRvUSrhASlLYM=",
+        "lastModified": 1773932644,
+        "narHash": "sha256-krEr+7cljCv+8DrDEMfBd+3tct3sKP6xIogdAMhiyT4=",
         "owner": "pocketpoke",
         "repo": "StreamOrganizer",
-        "rev": "8342a5a11b19cbe4eb0a3f0cf9844c0ea38d2bf7",
+        "rev": "af6836f6025b089703399e5c15e03cb55a7ef815",
         "type": "github"
       },
       "original": {
         "owner": "pocketpoke",
+        "ref": "dev",
         "repo": "StreamOrganizer",
         "type": "github"
       }
