@@ -9,16 +9,11 @@ let
     sha256 = "sha256-fzF/g5EXn/FwfrK2F7zdKx/PsdocUhtLYEy4Re+kMu8=";
   };
 
-  # Extract just the AppImage from the zip
   extractedAppImage = pkgs.stdenvNoCC.mkDerivation {
     name = "${pname}-${version}-extracted-appimage";
-
     inherit src;
-
     nativeBuildInputs = [ pkgs.unzip ];
-
     dontUnpack = true;
-
     installPhase = ''
       unzip $src
       mkdir -p $out
@@ -28,10 +23,8 @@ let
 
   desktopItems = pkgs.stdenvNoCC.mkDerivation {
     name = "${pname}-desktop";
-
     dontUnpack = true;
     dontBuild = true;
-
     desktopItem = pkgs.makeDesktopItem {
       name = pname;
       exec = "stability-matrix %U";
@@ -42,7 +35,6 @@ let
       terminal = false;
       startupNotify = true;
     };
-
     installPhase = ''
       mkdir -p $out/share/applications
       cp $desktopItem/share/applications/*.desktop $out/share/applications/${pname}.desktop
@@ -54,6 +46,9 @@ pkgs.appimageTools.wrapType2 rec {
   inherit pname version;
 
   src = "${extractedAppImage}/StabilityMatrix.AppImage";
+
+  # ← NEW: needed for wrapProgram
+  nativeBuildInputs = [ pkgs.makeWrapper ];
 
   extraPkgs =
     pkgs: with pkgs; [
@@ -68,7 +63,7 @@ pkgs.appimageTools.wrapType2 rec {
     install -Dm444 ${desktopItems}/share/applications/${pname}.desktop \
       $out/share/applications/${pname}.desktop
 
-    # Install the icon (you can also use multiple sizes or .png if you prefer)
+    # Install the icon
     install -Dm444 ${
       pkgs.fetchurl {
         url = "https://lykos.ai/smlogo.svg";
@@ -76,6 +71,11 @@ pkgs.appimageTools.wrapType2 rec {
       }
     } \
       $out/share/icons/hicolor/scalable/apps/${pname}.svg
+
+    # ← FIX: force the bundled Python to use NixOS certificates
+    wrapProgram $out/bin/stability-matrix \
+      --set SSL_CERT_FILE "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt" \
+      --set NIX_SSL_CERT_FILE "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
   '';
 
   meta = with pkgs.lib; {
