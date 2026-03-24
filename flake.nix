@@ -24,6 +24,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    vast-cli = {
+      url = "github:dialohq/vast-cli.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixcord.url = "github:FlameFlag/nixcord/5f38b16";
     hytale-launcher.url = "github:pocketpoke/hytale-launcher-nix";
     affinity-nix.url = "github:mrshmllow/affinity-nix";

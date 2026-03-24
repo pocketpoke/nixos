@@ -8,5 +8,6 @@
     ./development.nix
     ./media.nix
     ./utilities.nix
+    ./vast-cli.nix
   ];
 }
