@@ -35,6 +35,7 @@
     mistral-vibe.url = "github:mistralai/mistral-vibe";
     stream-organizer.url = "github:pocketpoke/StreamOrganizer/dev";
     twitchdownloadercli.url = "github:pocketpoke/TwitchDownloaderCLI-Nix-Flake";
+    claude-code.url = "github:sadjow/claude-code-nix";
   };
 
   outputs =
