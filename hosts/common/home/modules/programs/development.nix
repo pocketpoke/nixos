@@ -4,6 +4,7 @@
   home.packages = with pkgs; [
     nixd
     nixfmt-rfc-style
+    nodejs
   ];
 
   programs.git = {
@@ -27,6 +28,8 @@
         vscode-extensions.continue.continue
         vscode-extensions.ms-python.black-formatter
         vscode-extensions.ms-python.vscode-pylance
+        vscode-extensions.anthropic.claude-code
+        vscode-extensions.ms-azuretools.vscode-containers
         jnoortheen.nix-ide
         nefrob.vscode-just-syntax
         ms-python.python
@@ -67,6 +70,8 @@
       "continue.telemetryEnabled" = false;
       "continue.enableTabAutocomplete" = true;
       "continue.enableChat" = true;
+
+      "claudeCode.preferredLocation" = "panel";
 
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nixd";

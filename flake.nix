@@ -36,6 +36,7 @@
     stream-organizer.url = "github:pocketpoke/StreamOrganizer/dev";
     twitchdownloadercli.url = "github:pocketpoke/TwitchDownloaderCLI-Nix-Flake";
     claude-code.url = "github:sadjow/claude-code-nix";
+    codex-cli-nix.url = "github:sadjow/codex-cli-nix";
   };
 
   outputs =
