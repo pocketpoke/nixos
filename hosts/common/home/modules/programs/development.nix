@@ -5,6 +5,8 @@
     nixd
     nixfmt-rfc-style
     nodejs
+    gh
+    python3
   ];
 
   programs.git = {
