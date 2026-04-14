@@ -3,6 +3,9 @@
 {
   homebrew = {
     enable = true;
-    casks = [ "tailscale" ];
+    casks = [
+      "tailscale"
+      "parsec"
+    ];
   };
 }
