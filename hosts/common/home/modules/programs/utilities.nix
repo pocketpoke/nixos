@@ -2,6 +2,7 @@
 
 {
   home.packages = with pkgs; [
+    nextcloud-client
     wget
     curl
 
