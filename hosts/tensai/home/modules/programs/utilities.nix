@@ -2,6 +2,15 @@
 
 {
   home.packages = with pkgs; [
+    nextcloud-client
+    wget
+    curl
+
+    btop
+    fastfetch
+
+    bitwarden-desktop
+
     parsec-bin
 
     yazi

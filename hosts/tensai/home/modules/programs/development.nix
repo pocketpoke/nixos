@@ -24,8 +24,7 @@
 
     profiles.default.extensions =
       with pkgs.vscode-extensions;
-      [
-      ]
+      [ ]
       ++ (with pkgs; [
         vscode-extensions.continue.continue
         vscode-extensions.ms-python.black-formatter
