@@ -1,4 +1,9 @@
 { ... }: {
+  programs.nh = {
+    enable = true;
+    flake = "/home/user/.config/nixos";
+  };
+
   nix = {
     gc = {
       automatic = true;
