@@ -2,19 +2,15 @@
   pkgs,
   config,
   lib,
-  inputs,
   ...
 }:
 
 {
-  imports = [
-    inputs.nixcord.homeModules.nixcord
-  ];
-
   home.packages = with pkgs; [
     chatterino2
     thunderbird
     signal-desktop
+    vesktop
   ];
 
   sops = {
@@ -36,11 +32,4 @@
   home.activation.ensureChatterinoDir = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     mkdir -p "${builtins.dirOf config.sops.secrets.chatterino2-settings.path}"
   '';
-
-  programs.nixcord = {
-    enable = true;
-    discord.enable = true;
-
-    inherit ((import ./configs/nixcord.nix).programs.nixcord) config;
-  };
 }

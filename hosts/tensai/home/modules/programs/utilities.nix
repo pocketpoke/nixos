@@ -20,5 +20,7 @@
 
     gsmartcontrol
     smartmontools
+
+    syncthingtray
   ];
 }
