@@ -5,11 +5,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -49,7 +44,6 @@
       self,
       nixpkgs,
       nixpkgs-unstable,
-      nix-darwin,
       home-manager,
       sops-nix,
       ...
@@ -74,23 +68,5 @@
         ];
       };
 
-      darwinConfigurations.wundercube = nix-darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        specialArgs = { inherit inputs self; };
-        modules = [
-          ./hosts/wundercube/system
-
-          home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.sharedModules = [
-              sops-nix.homeManagerModules.sops
-            ];
-            home-manager.users.user = import ./hosts/wundercube/home;
-          }
-        ];
-      };
     };
 }
