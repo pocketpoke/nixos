@@ -37,6 +37,7 @@
     twitchdownloadercli.url = "github:pocketpoke/TwitchDownloaderCLI-Nix-Flake";
     claude-code.url = "github:sadjow/claude-code-nix";
     codex-cli-nix.url = "github:sadjow/codex-cli-nix";
+    hermes-agent.url = "github:NousResearch/hermes-agent";
   };
 
   outputs =
