@@ -5,6 +5,9 @@
       stability-matrix = final.callPackage ./stability-matrix.nix { };
       patchright = final.callPackage ./patchright.nix { };
       twitchlink = final.callPackage ./twitchlink.nix { };
+      imgbrd-grabber = final.callPackage ./imgbrd-grabber.nix {
+        imgbrd-grabber = prev.imgbrd-grabber;
+      };
     })
   ];
 }

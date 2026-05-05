@@ -1,0 +1,165 @@
+diff --git a/lib/src/login/oauth2-login.h b/lib/src/login/oauth2-login.h
+index 4771591..bcae646 100644
+--- a/lib/src/login/oauth2-login.h
++++ b/lib/src/login/oauth2-login.h
+@@ -42,6 +42,7 @@ class OAuth2Login : public Login
+ 		void loginPasswordJson();
+ 		void loginAuthorizationCode();
+ 		void postRequest(QList<QStrP> body, QMap<QString, QByteArray> headers = {});
++		void loginAuthorizationCodeWithWebView(const QString &codeVerifier);
+ 
+ 	private:
+ 		OAuth2Auth *m_auth;
+diff --git a/lib/src/login/oauth2-login.cpp b/lib/src/login/oauth2-login.cpp
+index 43df847..65dfea3 100644
+--- a/lib/src/login/oauth2-login.cpp
++++ b/lib/src/login/oauth2-login.cpp
+@@ -1,6 +1,8 @@
+ #include "login/oauth2-login.h"
+ #include <QByteArray>
+ #include <QCoreApplication>
++#include <QCryptographicHash>
++#include <QSharedPointer>
+ #include <QDataStream>
+ #include <QDesktopServices>
+ #include <QDir>
+@@ -10,6 +12,14 @@
+ #include <QOAuthHttpServerReplyHandler>
+ #include <QRandomGenerator>
+ #include <QUrlQuery>
++#include <functional>
++#if defined(USE_WEBENGINE) && !defined(Q_OS_WIN)
++	#include <QDialog>
++	#include <QVBoxLayout>
++	#include <QWebEnginePage>
++	#include <QWebEngineProfile>
++	#include <QWebEngineView>
++#endif
+ #include "auth/oauth2-auth.h"
+ #include "logger.h"
+ #include "login/site-network-access-manager.h"
+@@ -17,6 +27,33 @@
+ #include "models/site.h"
+ #include "network/network-manager.h"
+ #include "network/network-reply.h"
++
++#if defined(USE_WEBENGINE) && !defined(Q_OS_WIN)
++class PixivPkcePage final : public QWebEnginePage
++{
++	public:
++		explicit PixivPkcePage(QWebEngineProfile *profile, const QUrl &redirectUrl, QObject *parent = nullptr)
++			: QWebEnginePage(profile, parent), m_redirectUrl(redirectUrl.adjusted(QUrl::RemoveQuery | QUrl::RemoveFragment))
++		{}
++
++		std::function<void(const QUrl&)> onRedirect;
++
++	protected:
++		bool acceptNavigationRequest(const QUrl &url, NavigationType type, bool isMainFrame) override
++		{
++			Q_UNUSED(type)
++			const QUrl currentUrl = url.adjusted(QUrl::RemoveQuery | QUrl::RemoveFragment);
++			if (isMainFrame && onRedirect && (url.scheme() == QLatin1String("pixiv") || currentUrl == m_redirectUrl)) {
++				onRedirect(url);
++				return false;
++			}
++			return QWebEnginePage::acceptNavigationRequest(url, type, isMainFrame);
++		}
++
++	private:
++		QUrl m_redirectUrl;
++};
++#endif
+ #ifdef Q_OS_WIN
+ 	#include "windows-url-protocol.h"
+ #endif
+@@ -45,6 +82,70 @@ QString toUrlBase64(const QByteArray &data)
+ 	return ret;
+ }
+ 
++void OAuth2Login::loginAuthorizationCodeWithWebView(const QString &codeVerifier)
++{
++#if defined(USE_WEBENGINE) && !defined(Q_OS_WIN)
++	auto *dialog = new QDialog();
++	dialog->setAttribute(Qt::WA_DeleteOnClose);
++	dialog->resize(960, 720);
++	dialog->setWindowTitle(tr("Pixiv login"));
++
++	auto *layout = new QVBoxLayout(dialog);
++	layout->setContentsMargins(0, 0, 0, 0);
++
++	auto *view = new QWebEngineView(dialog);
++	layout->addWidget(view);
++
++	auto *profile = new QWebEngineProfile(view);
++	profile->setPersistentCookiesPolicy(QWebEngineProfile::NoPersistentCookies);
++	profile->setHttpUserAgent(m_site->userAgent());
++
++	const QUrl redirectUrl = m_site->fixUrl(m_auth->redirectUrl());
++	auto *page = new PixivPkcePage(profile, redirectUrl, view);
++	view->setPage(page);
++
++	const QString codeChallenge = toUrlBase64(QCryptographicHash::hash(codeVerifier.toLatin1(), QCryptographicHash::Sha256));
++	QUrl url = m_site->fixUrl(m_auth->authorizationUrl());
++	QUrlQuery query;
++	query.addQueryItem("code_challenge", codeChallenge);
++	query.addQueryItem("code_challenge_method", "S256");
++	query.addQueryItem("client", "pixiv-android");
++	url.setQuery(query);
++
++	auto done = QSharedPointer<bool>::create(false);
++	connect(dialog, &QDialog::rejected, this, [=]() {
++		if (!*done) {
++			log(QStringLiteral("[%1] OAuth2 PKCE login was cancelled").arg(m_site->url()), Logger::Warning);
++			emit loggedIn(Result::Failure);
++		}
++	});
++
++	page->onRedirect = [=](const QUrl &callbackUrl) {
++		*done = true;
++		const QString code = QUrlQuery(callbackUrl).queryItemValue("code");
++		if (code.isEmpty()) {
++			log(QStringLiteral("[%1] No authorization code received from Pixiv callback").arg(m_site->url()), Logger::Warning);
++			dialog->close();
++			emit loggedIn(Result::Failure);
++			return;
++		}
++
++		QList<QStrP> body { { "grant_type", "authorization_code" }, { "code", code }, { "code_verifier", codeVerifier }, { "include_policy", "true" } };
++		if (!m_auth->redirectUrl().isEmpty()) {
++			body << QStrP("redirect_uri", redirectUrl.toString(QUrl::FullyEncoded));
++		}
++
++		dialog->close();
++		postRequest(body);
++	};
++
++	page->load(url);
++	dialog->show();
++#else
++	Q_UNUSED(codeVerifier)
++#endif
++}
++
+ // https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/
+ void OAuth2Login::loginClientCredentials()
+ {
+@@ -153,6 +254,19 @@ void OAuth2Login::loginAuthorizationCode()
+ 		return;
+ 	}
+ 
++#if !defined(Q_OS_WIN)
++	if (m_auth->authType() == "pkce" && m_auth->urlProtocol() == QLatin1String("pixiv")) {
++		QByteArray byteVerifier;
++		QDataStream stream(&byteVerifier, QIODevice::WriteOnly);
++		for (int i = 0; i < 8; ++i) {
++			stream << QRandomGenerator::global()->generate();
++		}
++		const QString codeVerifier = toUrlBase64(byteVerifier);
++		loginAuthorizationCodeWithWebView(codeVerifier);
++		return;
++	}
++#endif
++
+ 	const QString urlProtocol = m_auth->urlProtocol();
+ 	if (!urlProtocol.isEmpty()) {
+ 		#ifdef Q_OS_WIN

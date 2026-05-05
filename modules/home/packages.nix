@@ -11,6 +11,7 @@
       kzones
       kcalc
       kate
+      filelight
       qtstyleplugin-kvantum
       qt6ct
     ])
@@ -42,6 +43,8 @@
       nixfmt-rfc-style
       nodejs
       gh
+
+      hermes-fhs
       python3
 
       inputs.hytale-launcher.packages.${stdenv.hostPlatform.system}.hytale-launcher
@@ -81,5 +84,7 @@
 
       libsForQt5.qtstyleplugin-kvantum
       libsForQt5.qt5ct
+
+      libreoffice-qt
     ]);
 }
