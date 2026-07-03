@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   boot = {
     loader = {
       systemd-boot.enable = true;
@@ -19,12 +20,16 @@
     };
 
     consoleLogLevel = 3;
+    kernelPackages = pkgs.linuxPackages_6_6;
     kernelParams = [
       "quiet"
       "splash"
       "intremap=on"
       "rd.systemd.show_status=auto"
       "udev.log_priority=3"
+      "pci=noats"
+      "pcie_aspm=off"
+      "amd_iommu=off"
     ];
 
     plymouth.enable = true;

@@ -59,9 +59,12 @@
       btop
       fastfetch
 
+      qbittorrent
+
       bitwarden-desktop
 
       parsec-bin
+      r2modman
 
       yazi
       tree

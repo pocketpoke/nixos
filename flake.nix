@@ -38,15 +38,28 @@
     claude-code.url = "github:sadjow/claude-code-nix";
     codex-cli-nix.url = "github:sadjow/codex-cli-nix";
     hermes-agent.url = "github:NousResearch/hermes-agent";
+    dw-proton.url = "github:imaviso/dwproton-flake";
   };
 
   outputs =
     { nixpkgs, ... }@inputs:
+    let
+      pkgs = import nixpkgs {
+        system = "x86_64-linux";
+        config = {
+          allowUnfree = true;
+          nvidia.acceptLicense = true;
+        };
+      };
+    in
     {
       nixosConfigurations.tensai = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        pkgs = pkgs;
         specialArgs = { inherit inputs; };
-        modules = [ ./hosts/tensai ];
+        modules = [
+          ./hosts/tensai
+        ];
       };
     };
 }

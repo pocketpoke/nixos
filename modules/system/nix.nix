@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   programs.nh = {
     enable = true;
     flake = "/home/user/.config/nixos";
@@ -23,6 +24,4 @@
       ];
     };
   };
-
-  nixpkgs.config.allowUnfree = true;
 }

@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }:
+{
   virtualisation.docker.enable = true;
 
   services.ollama = {
@@ -27,6 +28,9 @@
 
   programs.steam = {
     enable = true;
-    extraCompatPackages = with pkgs; [ proton-ge-bin ];
+    extraCompatPackages = with pkgs; [
+      proton-ge-bin
+      inputs.dw-proton.packages.${pkgs.stdenv.hostPlatform.system}.dw-proton
+    ];
   };
 }
