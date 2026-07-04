@@ -110,143 +110,9 @@
     };
 
     configFile = {
-      plasmarc.Theme.name = "Qogir-dark";
-      kdeglobals.KDE.LookAndFeelPackage = "com.github.vinceliuice.Qogir-dark";
       kdeglobals."KFileDialog Settings"."Show hidden files" = true;
       kdeglobals."KFileDialog Settings"."Sort by" = "Date";
 
-      kdeglobals."ColorEffects:Disabled".ChangeSelectionColor = "";
-      kdeglobals."ColorEffects:Disabled".Color = "56,56,56";
-      kdeglobals."ColorEffects:Disabled".ColorAmount = 0;
-      kdeglobals."ColorEffects:Disabled".ColorEffect = 0;
-      kdeglobals."ColorEffects:Disabled".ContrastAmount = "0.65";
-      kdeglobals."ColorEffects:Disabled".ContrastEffect = 1;
-      kdeglobals."ColorEffects:Disabled".Enable = "";
-      kdeglobals."ColorEffects:Disabled".IntensityAmount = "0.1";
-      kdeglobals."ColorEffects:Disabled".IntensityEffect = 2;
-
-      kdeglobals."ColorEffects:Inactive".ChangeSelectionColor = false;
-      kdeglobals."ColorEffects:Inactive".Color = "112,111,110";
-      kdeglobals."ColorEffects:Inactive".ColorAmount = "0.025";
-      kdeglobals."ColorEffects:Inactive".ColorEffect = 2;
-      kdeglobals."ColorEffects:Inactive".ContrastAmount = "0.25";
-      kdeglobals."ColorEffects:Inactive".ContrastEffect = 2;
-      kdeglobals."ColorEffects:Inactive".Enable = false;
-      kdeglobals."ColorEffects:Inactive".IntensityAmount = -1;
-      kdeglobals."ColorEffects:Inactive".IntensityEffect = 0;
-
-      kdeglobals."Colors:Button".BackgroundAlternate = "66,68,79";
-      kdeglobals."Colors:Button".BackgroundNormal = "40,42,51";
-      kdeglobals."Colors:Button".DecorationFocus = "82,148,226";
-      kdeglobals."Colors:Button".DecorationHover = "82,148,226";
-      kdeglobals."Colors:Button".ForegroundActive = "61,174,233";
-      kdeglobals."Colors:Button".ForegroundInactive = "102,106,115";
-      kdeglobals."Colors:Button".ForegroundLink = "41,128,185";
-      kdeglobals."Colors:Button".ForegroundNegative = "218,68,83";
-      kdeglobals."Colors:Button".ForegroundNeutral = "246,116,0";
-      kdeglobals."Colors:Button".ForegroundNormal = "224,229,235";
-      kdeglobals."Colors:Button".ForegroundPositive = "39,174,96";
-      kdeglobals."Colors:Button".ForegroundVisited = "82,148,226";
-
-      kdeglobals."Colors:Complementary".BackgroundAlternate = "50,52,61";
-      kdeglobals."Colors:Complementary".BackgroundNormal = "40,42,51";
-      kdeglobals."Colors:Complementary".DecorationFocus = "82,148,226";
-      kdeglobals."Colors:Complementary".DecorationHover = "82,148,226";
-      kdeglobals."Colors:Complementary".ForegroundActive = "61,174,233";
-      kdeglobals."Colors:Complementary".ForegroundInactive = "102,106,115";
-      kdeglobals."Colors:Complementary".ForegroundLink = "41,128,185";
-      kdeglobals."Colors:Complementary".ForegroundNegative = "218,68,83";
-      kdeglobals."Colors:Complementary".ForegroundNeutral = "246,116,0";
-      kdeglobals."Colors:Complementary".ForegroundNormal = "230,235,239";
-      kdeglobals."Colors:Complementary".ForegroundPositive = "39,174,96";
-      kdeglobals."Colors:Complementary".ForegroundVisited = "82,148,226";
-
-      kdeglobals."Colors:Header".BackgroundAlternate = "50,52,61";
-      kdeglobals."Colors:Header".BackgroundNormal = "40,42,51";
-      kdeglobals."Colors:Header".DecorationFocus = "82,148,226";
-      kdeglobals."Colors:Header".DecorationHover = "82,148,226";
-      kdeglobals."Colors:Header".ForegroundActive = "61,174,233";
-      kdeglobals."Colors:Header".ForegroundInactive = "102,106,115";
-      kdeglobals."Colors:Header".ForegroundLink = "41,128,185";
-      kdeglobals."Colors:Header".ForegroundNegative = "218,68,83";
-      kdeglobals."Colors:Header".ForegroundNeutral = "246,116,0";
-      kdeglobals."Colors:Header".ForegroundNormal = "230,235,239";
-      kdeglobals."Colors:Header".ForegroundPositive = "39,174,96";
-      kdeglobals."Colors:Header".ForegroundVisited = "82,148,226";
-
-      kdeglobals."Colors:Header][Inactive".BackgroundAlternate = "50,52,61";
-      kdeglobals."Colors:Header][Inactive".BackgroundNormal = "40,42,51";
-      kdeglobals."Colors:Header][Inactive".DecorationFocus = "82,148,226";
-      kdeglobals."Colors:Header][Inactive".DecorationHover = "82,148,226";
-      kdeglobals."Colors:Header][Inactive".ForegroundActive = "61,174,233,150";
-      kdeglobals."Colors:Header][Inactive".ForegroundInactive = "102,106,115";
-      kdeglobals."Colors:Header][Inactive".ForegroundLink = "41,128,185";
-      kdeglobals."Colors:Header][Inactive".ForegroundNegative = "218,68,83";
-      kdeglobals."Colors:Header][Inactive".ForegroundNeutral = "246,116,0";
-      kdeglobals."Colors:Header][Inactive".ForegroundNormal = "230,235,239,150";
-      kdeglobals."Colors:Header][Inactive".ForegroundPositive = "39,174,96";
-      kdeglobals."Colors:Header][Inactive".ForegroundVisited = "82,148,226";
-
-      kdeglobals."Colors:Selection".BackgroundAlternate = "29,153,243";
-      kdeglobals."Colors:Selection".BackgroundNormal = "82,148,226";
-      kdeglobals."Colors:Selection".DecorationFocus = "133,196,255";
-      kdeglobals."Colors:Selection".DecorationHover = "129,205,255";
-      kdeglobals."Colors:Selection".ForegroundActive = "252,252,252";
-      kdeglobals."Colors:Selection".ForegroundInactive = "230,235,239";
-      kdeglobals."Colors:Selection".ForegroundLink = "253,188,75";
-      kdeglobals."Colors:Selection".ForegroundNegative = "218,68,83";
-      kdeglobals."Colors:Selection".ForegroundNeutral = "246,116,0";
-      kdeglobals."Colors:Selection".ForegroundNormal = "254,253,253";
-      kdeglobals."Colors:Selection".ForegroundPositive = "39,174,96";
-      kdeglobals."Colors:Selection".ForegroundVisited = "189,195,199";
-
-      kdeglobals."Colors:Tooltip".BackgroundAlternate = "47,52,63";
-      kdeglobals."Colors:Tooltip".BackgroundNormal = "40,42,51";
-      kdeglobals."Colors:Tooltip".DecorationFocus = "82,148,226";
-      kdeglobals."Colors:Tooltip".DecorationHover = "82,148,226";
-      kdeglobals."Colors:Tooltip".ForegroundActive = "61,174,233";
-      kdeglobals."Colors:Tooltip".ForegroundInactive = "102,106,115";
-      kdeglobals."Colors:Tooltip".ForegroundLink = "41,128,185";
-      kdeglobals."Colors:Tooltip".ForegroundNegative = "218,68,83";
-      kdeglobals."Colors:Tooltip".ForegroundNeutral = "246,116,0";
-      kdeglobals."Colors:Tooltip".ForegroundNormal = "211,218,227";
-      kdeglobals."Colors:Tooltip".ForegroundPositive = "39,174,96";
-      kdeglobals."Colors:Tooltip".ForegroundVisited = "82,148,226";
-
-      kdeglobals."Colors:View".BackgroundAlternate = "64,69,82";
-      kdeglobals."Colors:View".BackgroundNormal = "50,52,61";
-      kdeglobals."Colors:View".DecorationFocus = "82,148,226";
-      kdeglobals."Colors:View".DecorationHover = "82,148,226";
-      kdeglobals."Colors:View".ForegroundActive = "61,174,233";
-      kdeglobals."Colors:View".ForegroundInactive = "102,106,115";
-      kdeglobals."Colors:View".ForegroundLink = "41,128,185";
-      kdeglobals."Colors:View".ForegroundNegative = "218,68,83";
-      kdeglobals."Colors:View".ForegroundNeutral = "246,116,0";
-      kdeglobals."Colors:View".ForegroundNormal = "224,229,235";
-      kdeglobals."Colors:View".ForegroundPositive = "39,174,96";
-      kdeglobals."Colors:View".ForegroundVisited = "82,148,226";
-
-      kdeglobals."Colors:Window".BackgroundAlternate = "50,52,61";
-      kdeglobals."Colors:Window".BackgroundNormal = "40,42,51";
-      kdeglobals."Colors:Window".DecorationFocus = "82,148,226";
-      kdeglobals."Colors:Window".DecorationHover = "82,148,226";
-      kdeglobals."Colors:Window".ForegroundActive = "61,174,233";
-      kdeglobals."Colors:Window".ForegroundInactive = "102,106,115";
-      kdeglobals."Colors:Window".ForegroundLink = "41,128,185";
-      kdeglobals."Colors:Window".ForegroundNegative = "218,68,83";
-      kdeglobals."Colors:Window".ForegroundNeutral = "246,116,0";
-      kdeglobals."Colors:Window".ForegroundNormal = "230,235,239";
-      kdeglobals."Colors:Window".ForegroundPositive = "39,174,96";
-      kdeglobals."Colors:Window".ForegroundVisited = "82,148,226";
-
-      kdeglobals.WM.activeBackground = "40,42,51";
-      kdeglobals.WM.activeBlend = "40,42,51";
-      kdeglobals.WM.activeForeground = "177,178,183";
-      kdeglobals.WM.inactiveBackground = "40,42,51";
-      kdeglobals.WM.inactiveBlend = "47,52,63";
-      kdeglobals.WM.inactiveForeground = "102,106,115";
-
-      kcminputrc.Mouse.cursorTheme = "Qogir-Dark";
       kcminputrc.Mouse.X11LibInputXAccelProfileFlat = true;
 
       kwinrc.Desktops.Id_1 = "4c3d8227-047d-4de2-987c-728a1a33047e";
@@ -301,7 +167,6 @@
       kwinrc.Effect-translucency.Inactive = 90;
       kwinrc.Plugins.minimizeallEnabled = false;
       kwinrc."org.kde.kdecoration2".BorderSize = "Normal";
-      kwinrc."org.kde.kdecoration2".theme = "__aurorae__svg__Qogir-dark";
       kwinrc.Script-krohnkite.ignoreClass = "krunner,yakuake,spectacle,kded5,xwaylandvideobridge,plasmashell,ksplashqml,org.kde.plasmashell,org.kde.polkit-kde-authentication-agent-1,org.kde.kruler,kruler,kwin_wayland,ksmserver-logout-greeter,flameshot";
       kwinrc.Script-kzones.layoutsJson = ''
         [
@@ -553,11 +418,6 @@
       wallpaperSlideShow = {
         path = "/home/user/Pictures/Wallpapers/Desktop/Henya";
         interval = 300;
-      };
-      lookAndFeel = "com.github.vinceliuice.Qogir-dark";
-      windowDecorations = {
-        library = "org.kde.kwin.aurorae";
-        theme = "__aurorae__svg__Qogir-dark";
       };
     };
 

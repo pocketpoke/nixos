@@ -16,8 +16,15 @@
     inputs.home-manager.nixosModules.home-manager
   ];
 
+  nixpkgs.config = {
+    allowUnfree = true;
+    nvidia.acceptLicense = true;
+  };
+
+  nixpkgs.overlays = [ inputs.affinity-nix.overlays.default ];
+
   networking.hostName = "tensai";
-  system.stateVersion = "25.05";
+  system.stateVersion = "26.05";
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;

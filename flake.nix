@@ -2,11 +2,11 @@
   description = "My NixOS Flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -25,37 +25,21 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    antigravity-nix = {
-      url = "github:jacopone/antigravity-nix";
+    hytale-launcher.url = "github:pocketpoke/hytale-launcher-nix";
+    affinity-nix = {
+      url = "github:mrshmllow/affinity-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    hytale-launcher.url = "github:pocketpoke/hytale-launcher-nix";
-    affinity-nix.url = "github:mrshmllow/affinity-nix";
-    mistral-vibe.url = "github:mistralai/mistral-vibe";
     stream-organizer.url = "github:pocketpoke/StreamOrganizer/dev";
     twitchdownloadercli.url = "github:pocketpoke/TwitchDownloaderCLI-Nix-Flake";
-    claude-code.url = "github:sadjow/claude-code-nix";
-    codex-cli-nix.url = "github:sadjow/codex-cli-nix";
-    hermes-agent.url = "github:NousResearch/hermes-agent";
     dw-proton.url = "github:imaviso/dwproton-flake";
   };
 
   outputs =
     { nixpkgs, ... }@inputs:
-    let
-      pkgs = import nixpkgs {
-        system = "x86_64-linux";
-        config = {
-          allowUnfree = true;
-          nvidia.acceptLicense = true;
-        };
-      };
-    in
     {
       nixosConfigurations.tensai = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        pkgs = pkgs;
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/tensai

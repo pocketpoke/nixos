@@ -2,8 +2,6 @@
 let
   hermesFhsPkgs =
     pkgs: with pkgs; [
-      inputs.hermes-agent.packages.${stdenv.hostPlatform.system}.default
-
       nodejs_22
       ripgrep
       git
@@ -46,7 +44,6 @@ in
 {
   nixpkgs.overlays = [
     (final: prev: {
-      ollama-cuda = prev.ollama-cuda.override { cudaArches = [ "61" ]; };
       stability-matrix = final.callPackage ./stability-matrix.nix { };
       patchright = final.callPackage ./patchright.nix { };
       twitchlink = final.callPackage ./twitchlink.nix { };

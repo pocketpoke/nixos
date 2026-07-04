@@ -2,17 +2,6 @@
 {
   virtualisation.docker.enable = true;
 
-  services.ollama = {
-    enable = true;
-    acceleration = "cuda";
-    package = pkgs.ollama-cuda;
-    host = "0.0.0.0";
-    environmentVariables = {
-      OLLAMA_HOST = "0.0.0.0:11434";
-      OLLAMA_ORIGINS = "*";
-    };
-  };
-
   services.syncthing = {
     enable = true;
     user = "user";

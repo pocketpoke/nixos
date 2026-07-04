@@ -18,11 +18,6 @@
     ++ (with pkgs; [
       opencode
 
-      inputs.claude-code.packages.${stdenv.hostPlatform.system}.claude-code
-      inputs.codex-cli-nix.packages.${stdenv.hostPlatform.system}.default
-      inputs.mistral-vibe.packages.${stdenv.hostPlatform.system}.default
-      inputs.antigravity-nix.packages.${stdenv.hostPlatform.system}.default
-
       unstablePkgs.lmstudio
 
       stability-matrix
@@ -37,7 +32,7 @@
       signal-desktop
       vesktop
 
-      inputs.affinity-nix.packages.${stdenv.hostPlatform.system}.v3
+      pkgs.affinity-v3
 
       nixd
       nixfmt-rfc-style
@@ -60,8 +55,6 @@
       fastfetch
 
       qbittorrent
-
-      bitwarden-desktop
 
       parsec-bin
       r2modman
