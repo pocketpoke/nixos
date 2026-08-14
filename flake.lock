@@ -88,8 +88,8 @@
         ]
       },
       "locked": {
-        "lastModified": 1786676420,
-        "narHash": "sha256-PJcR8Cp4VdwOh5Ueaq/qrsFU5Q881tgmIDaULULeMN4=",
+        "lastModified": 1786687720,
+        "narHash": "sha256-1UjfF67E0RlIectvmjy6ea0juCPvBY9bkJid/6VeXoA=",
         "path": "/home/user/workspace/cua-driver-local",
         "type": "path"
       },
