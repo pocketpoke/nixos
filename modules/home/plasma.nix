@@ -142,7 +142,8 @@
       kwinrulesrc."35eccb80-3c37-402d-9432-1ad91723ab13".wmclass = "flameshot";
       kwinrulesrc."35eccb80-3c37-402d-9432-1ad91723ab13".wmclassmatch = 1;
 
-      kwinrc.Plugins.krohnkiteEnabled = true;
+      # Krohnkite is retained for easy rollback but disabled by default.
+      kwinrc.Plugins.krohnkiteEnabled = false;
       kwinrc.Script-krohnkite.noTileBorder = false;
       kwinrc.Script-krohnkite.screenGapBetween = 8;
       kwinrc.Script-krohnkite.screenGapBottom = 8;
@@ -151,6 +152,11 @@
       kwinrc.Script-krohnkite.screenGapTop = 8;
 
       kwinrc.Plugins.kwin4_effect_geometry_changeEnabled = true;
+      kwinrc.Plugins.aeroglassblurEnabled = true;
+      kwinrc.Plugins.smodglowEnabled = true;
+
+      smodrc.Windeco.EnableShadow = true;
+      smodrc.Windeco.DecorationTheme = "Aero";
 
       krunnerrc.General.FreeFloating = true;
       kscreenlockerrc.Daemon.LockGrace = 0;
@@ -161,6 +167,9 @@
       kwinrc.Compositing.GLPreferBufferSwap = "e";
       kwinrc.Compositing.UnredirectFullscreen = false;
       kwinrc.Compositing.WindowsBlockCompositing = false;
+      kwinrc.Windows.windowSnapZone = 10;
+      kwinrc.Windows.borderSnapZone = 10;
+      kwinrc.Windows.centerSnapZone = 0;
       kwinrc.Xwayland.Scale = 1;
       kwinrc.Plugins.kzonesEnabled = false;
       kwinrc.Effect-diminactive.Strength = 90;

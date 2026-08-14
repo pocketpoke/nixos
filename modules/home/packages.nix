@@ -4,6 +4,24 @@
   unstablePkgs,
   ...
 }:
+let
+  hermesDesktop = inputs.hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.desktop;
+  hermesDesktopEntry = pkgs.makeDesktopItem {
+    name = "hermes-agent";
+    desktopName = "Hermes Agent";
+    comment = "Native desktop client for Hermes Agent";
+    exec = "${hermesDesktop}/bin/hermes-desktop %U";
+    icon = "${./../../assets/hermes-agent.png}";
+    terminal = false;
+    type = "Application";
+    categories = [
+      "Development"
+      "Utility"
+    ];
+    startupNotify = true;
+    startupWMClass = "Hermes";
+  };
+in
 {
   home.packages =
     (with pkgs.kdePackages; [
@@ -12,11 +30,11 @@
       kcalc
       kate
       filelight
-      qtstyleplugin-kvantum
       qt6ct
     ])
     ++ (with pkgs; [
       opencode
+      codex
 
       unstablePkgs.lmstudio
 
@@ -39,7 +57,19 @@
       nodejs
       gh
 
-      hermes-fhs
+      hermes-cli
+      hermesDesktop
+      hermesDesktopEntry
+      chromium
+      python3Packages.pip
+      python3Packages.setuptools
+      python3Packages.virtualenv
+      gcc
+      glibc.dev
+      libffi.dev
+      zlib.dev
+      pkg-config
+      gnumake
       python3
 
       inputs.hytale-launcher.packages.${stdenv.hostPlatform.system}.hytale-launcher
@@ -78,7 +108,6 @@
 
       syncthingtray
 
-      libsForQt5.qtstyleplugin-kvantum
       libsForQt5.qt5ct
 
       libreoffice-qt

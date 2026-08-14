@@ -33,6 +33,15 @@
     stream-organizer.url = "github:pocketpoke/StreamOrganizer/dev";
     twitchdownloadercli.url = "github:pocketpoke/TwitchDownloaderCLI-Nix-Flake";
     dw-proton.url = "github:imaviso/dwproton-flake";
+    hermes-agent.url = "github:NousResearch/hermes-agent";
+    cua-driver-fork = {
+      # Use the committed, pushed checkout locally so NixOS activation does not
+      # depend on downloading the full upstream Git history on this host.
+      # Remote source of record: github.com/pocketpoke/cua, commit 943a726.
+      url = "path:/home/user/workspace/cua-driver-local";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    aerothemeplasma-nix.url = "github:nyakase/aerothemeplasma-nix";
   };
 
   outputs =
