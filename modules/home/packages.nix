@@ -6,11 +6,17 @@
 }:
 let
   hermesDesktop = inputs.hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.desktop;
+  cuaDriver = inputs.cua-driver-fork.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  hermesDesktopLauncher = pkgs.writeShellScriptBin "hermes-desktop-cua" ''
+    export HERMES_CUA_DRIVER_CMD="${cuaDriver}/bin/cua-driver"
+    export CUA_DRIVER_RS_ENABLE_WAYLAND=1
+    exec "${hermesDesktop}/bin/hermes-desktop" "$@"
+  '';
   hermesDesktopEntry = pkgs.makeDesktopItem {
     name = "hermes-agent";
     desktopName = "Hermes Agent";
     comment = "Native desktop client for Hermes Agent";
-    exec = "${hermesDesktop}/bin/hermes-desktop %U";
+    exec = "${hermesDesktopLauncher}/bin/hermes-desktop-cua %U";
     icon = "${./../../assets/hermes-agent.png}";
     terminal = false;
     type = "Application";
@@ -59,6 +65,7 @@ in
 
       hermes-cli
       hermesDesktop
+      hermesDesktopLauncher
       hermesDesktopEntry
       chromium
       python3Packages.pip
